@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code, BookOpen, Briefcase, Award, FileText, Brain, Link, Phone, Menu, X, GraduationCap } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, BookOpen, Briefcase, Award, FileText, Brain, Link, Phone, Menu, X, GraduationCap, Home, ChevronRight } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,6 +26,7 @@ function App() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
+              <a href="#" className="text-gray-200 hover:text-[#ff006e] transition-colors">Home</a>
               <a href="#education" className="text-gray-200 hover:text-[#ff006e] transition-colors">Education</a>
               <a href="#skills" className="text-gray-200 hover:text-[#ff006e] transition-colors">Skills</a>
               <a href="#experience" className="text-gray-200 hover:text-[#ff006e] transition-colors">Experience</a>
@@ -40,6 +41,7 @@ function App() {
           {/* Mobile Navigation */}
           <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} pb-6`}>
             <div className="flex flex-col space-y-4">
+              <a href="#" className="text-gray-200 hover:text-[#ff006e]" onClick={() => setIsMenuOpen(false)}>Home</a>
               <a href="#education" className="text-gray-200 hover:text-[#ff006e]" onClick={() => setIsMenuOpen(false)}>Education</a>
               <a href="#skills" className="text-gray-200 hover:text-[#ff006e]" onClick={() => setIsMenuOpen(false)}>Skills</a>
               <a href="#experience" className="text-gray-200 hover:text-[#ff006e]" onClick={() => setIsMenuOpen(false)}>Experience</a>
@@ -54,7 +56,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="min-h-screen pt-20 bg-gradient-to-br from-black via-[#03045e] to-black text-white">
+      <header className="min-h-screen pt-20 bg-gradient-to-br from-black via-[#03045e] to-black text-white" id="home">
         <div className="container mx-auto px-4 h-[calc(100vh-5rem)] flex items-center">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -125,112 +127,177 @@ function App() {
         </div>
       </header>
 
-      {/* Education Section */}
-      <section className="py-20 bg-white" id="education">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Education</h2>
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-[#ff006e]/20">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-[#ff006e]">Kuppam Engineering College (KEC)</h3>
-                  <p className="text-gray-600">B.Tech in Computer Science and Engineering</p>
-                </div>
-                <span className="text-gray-500">2020 - 2024</span>
-              </div>
-              <p className="text-gray-600">CGPA: 8.3</p>
+      {/* Timeline Flow Section */}
+      <div className="relative">
+        {/* Education Section */}
+        <section className="py-20 bg-white" id="education">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-center mb-12">
+              <GraduationCap className="w-8 h-8 text-[#ff006e] mr-3" />
+              <h2 className="text-3xl font-bold text-center">Education Journey</h2>
             </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-[#ff006e]/20">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-[#ff006e]">Jawahar Navodaya Vidyalaya (JNV)</h3>
-                  <p className="text-gray-600">Higher Secondary Certificate (HSC) - CBSE</p>
+            
+            <div className="max-w-4xl mx-auto">
+              {/* Timeline */}
+              <div className="relative">
+                {/* Vertical Line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#03045e] to-[#ff006e] rounded-full"></div>
+                
+                {/* Timeline Items */}
+                <div className="space-y-16">
+                  {/* KEC */}
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-3 w-6 h-6 rounded-full bg-[#ff006e] border-4 border-white shadow-lg z-10"></div>
+                    <div className="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20 md:text-right">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-semibold text-[#ff006e]">Kuppam Engineering College (KEC)</h3>
+                        <p className="text-gray-600">B.Tech in Computer Science and Engineering</p>
+                      </div>
+                      <p className="text-gray-600">CGPA: 8.3</p>
+                      <span className="block mt-2 text-gray-500">2020 - 2024</span>
+                    </div>
+                  </div>
+                  
+                  {/* JNV */}
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-3 w-6 h-6 rounded-full bg-[#03045e] border-4 border-white shadow-lg z-10"></div>
+                    <div className="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-lg border border-[#03045e]/20">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-semibold text-[#03045e]">Jawahar Navodaya Vidyalaya (JNV)</h3>
+                        <p className="text-gray-600">Higher Secondary Certificate (HSC) - CBSE</p>
+                      </div>
+                      <p className="text-gray-600">CGPA: 9.0</p>
+                      <span className="block mt-2 text-gray-500">2018 - 2020</span>
+                    </div>
+                  </div>
+                  
+                  {/* High School */}
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-3 w-6 h-6 rounded-full bg-[#ff006e] border-4 border-white shadow-lg z-10"></div>
+                    <div className="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20 md:text-right">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-semibold text-[#ff006e]">Vijaya Bharathy EM High School</h3>
+                        <p className="text-gray-600">Secondary School Certificate (SSC) - BSE-AP</p>
+                      </div>
+                      <p className="text-gray-600">CGPA: 10.0</p>
+                      <span className="block mt-2 text-gray-500">2017 - 2018</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-gray-500">2018 - 2020</span>
               </div>
-              <p className="text-gray-600">CGPA: 9.0</p>
             </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-[#ff006e]/20">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-[#ff006e]">Vijaya Bharathy EM High School</h3>
-                  <p className="text-gray-600">Secondary School Certificate (SSC) - BSE-AP</p>
-                </div>
-                <span className="text-gray-500">2017 - 2018</span>
-              </div>
-              <p className="text-gray-600">CGPA: 10.0</p>
+            
+            {/* Next Section Arrow */}
+            <div className="flex justify-center mt-16">
+              <a href="#skills" className="p-3 bg-[#03045e] text-white rounded-full shadow-lg hover:bg-[#ff006e] transition-colors">
+                <ChevronRight className="w-6 h-6" />
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Skills Section */}
-      <section className="py-20 bg-gray-50" id="skills">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20">
-              <Code className="w-8 h-8 text-[#ff006e] mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Programming Languages</h3>
-              <div className="space-y-2">
-                <p className="text-gray-600">C, Python, Java</p>
-                <p className="text-gray-600">SQL, JavaScript, PHP</p>
+        {/* Skills Section */}
+        <section className="py-20 bg-gray-50" id="skills">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-center mb-12">
+              <Brain className="w-8 h-8 text-[#ff006e] mr-3" />
+              <h2 className="text-3xl font-bold text-center">Skills & Technologies</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="p-6 bg-white rounded-lg shadow-lg border-t-4 border-t-[#ff006e] hover:transform hover:-translate-y-2 transition-transform duration-300">
+                <Code className="w-8 h-8 text-[#ff006e] mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Programming Languages</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-600">C, Python, Java</p>
+                  <p className="text-gray-600">SQL, JavaScript, PHP</p>
+                </div>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-lg border-t-4 border-t-[#03045e] hover:transform hover:-translate-y-2 transition-transform duration-300">
+                <Brain className="w-8 h-8 text-[#03045e] mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Technologies</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-600">React, Node.js, AWS, Azure</p>
+                  <p className="text-gray-600">MySQL, HTML, CSS, Bootstrap</p>
+                </div>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-lg border-t-4 border-t-[#ff006e] hover:transform hover:-translate-y-2 transition-transform duration-300">
+                <BookOpen className="w-8 h-8 text-[#ff006e] mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Tools & Platforms</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-600">Git, GitHub</p>
+                  <p className="text-gray-600">TensorFlow, Flask</p>
+                </div>
               </div>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20">
-              <Brain className="w-8 h-8 text-[#ff006e] mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Technologies</h3>
-              <div className="space-y-2">
-                <p className="text-gray-600">React, Node.js, AWS, Azure</p>
-                <p className="text-gray-600">MySQL, HTML, CSS, Bootstrap</p>
-              </div>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20">
-              <BookOpen className="w-8 h-8 text-[#ff006e] mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Tools & Platforms</h3>
-              <div className="space-y-2">
-                <p className="text-gray-600">Git, GitHub</p>
-                <p className="text-gray-600">TensorFlow, Flask</p>
-              </div>
+            
+            {/* Next Section Arrow */}
+            <div className="flex justify-center mt-16">
+              <a href="#experience" className="p-3 bg-[#03045e] text-white rounded-full shadow-lg hover:bg-[#ff006e] transition-colors">
+                <ChevronRight className="w-6 h-6" />
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Experience Section */}
-      <section className="py-20 bg-white" id="experience">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-[#ff006e]/20">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-[#ff006e]">Frontend Developer</h3>
-                  <p className="text-gray-600">Future Ready Talent</p>
-                </div>
-                <span className="text-gray-500">June 2022 – January 2023</span>
-              </div>
-              <p className="text-gray-600">
-                Developed real-time web applications using Azure, HTML, CSS, JavaScript, and Bootstrap.
-              </p>
+        {/* Experience Section */}
+        <section className="py-20 bg-white" id="experience">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-center mb-12">
+              <Briefcase className="w-8 h-8 text-[#ff006e] mr-3" />
+              <h2 className="text-3xl font-bold text-center">Professional Experience</h2>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-[#ff006e]/20">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-[#ff006e]">Machine Learning Intern</h3>
-                  <p className="text-gray-600">Skill Dzire</p>
+            
+            <div className="max-w-4xl mx-auto">
+              {/* Timeline */}
+              <div className="relative">
+                {/* Vertical Line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#ff006e] to-[#03045e] rounded-full"></div>
+                
+                {/* Timeline Items */}
+                <div className="space-y-16">
+                  {/* Machine Learning Intern */}
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-3 w-6 h-6 rounded-full bg-[#ff006e] border-4 border-white shadow-lg z-10"></div>
+                    <div className="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-lg border border-[#ff006e]/20 md:text-right">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-semibold text-[#ff006e]">Machine Learning Intern</h3>
+                        <p className="text-gray-600">Skill Dzire</p>
+                      </div>
+                      <p className="text-gray-600">
+                        Implemented ML models including CNN for Cats vs. Dogs classification, Diabetes Detection, and Gmail Spam Detection.
+                      </p>
+                      <span className="block mt-2 text-gray-500">Feb 2024 – May 2024</span>
+                    </div>
+                  </div>
+                  
+                  {/* Frontend Developer */}
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-3 w-6 h-6 rounded-full bg-[#03045e] border-4 border-white shadow-lg z-10"></div>
+                    <div className="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 md:w-[calc(50%-2rem)] p-6 bg-white rounded-lg shadow-lg border border-[#03045e]/20">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-semibold text-[#03045e]">Frontend Developer</h3>
+                        <p className="text-gray-600">Future Ready Talent</p>
+                      </div>
+                      <p className="text-gray-600">
+                        Developed real-time web applications using Azure, HTML, CSS, JavaScript, and Bootstrap.
+                      </p>
+                      <span className="block mt-2 text-gray-500">June 2022 – January 2023</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-gray-500">Feb 2024 – May 2024</span>
               </div>
-              <p className="text-gray-600">
-                Implemented ML models including CNN for Cats vs. Dogs classification, Diabetes Detection, and Gmail Spam Detection.
-              </p>
+            </div>
+            
+            {/* Next Section Arrow */}
+            <div className="flex justify-center mt-16">
+              <a href="#projects" className="p-3 bg-[#03045e] text-white rounded-full shadow-lg hover:bg-[#ff006e] transition-colors">
+                <ChevronRight className="w-6 h-6" />
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Projects Section */}
       <section className="py-20 bg-gray-50" id="projects">
@@ -285,6 +352,13 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Next Section Arrow */}
+          <div className="flex justify-center mt-16">
+            <a href="#connect" className="p-3 bg-[#03045e] text-white rounded-full shadow-lg hover:bg-[#ff006e] transition-colors">
+              <ChevronRight className="w-6 h-6" />
+            </a>
           </div>
         </div>
       </section>
@@ -351,6 +425,13 @@ function App() {
               </div>
             </div>
           </div>
+          
+          {/* Next Section Arrow */}
+          <div className="flex justify-center mt-16">
+            <a href="#contact" className="p-3 bg-white text-[#03045e] rounded-full shadow-lg hover:bg-[#ff006e] hover:text-white transition-colors">
+              <ChevronRight className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -393,6 +474,9 @@ function App() {
             <div>
               <h3 className="text-xl font-semibold mb-4 text-[#ff006e]">Quick Links</h3>
               <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-[#ff006e] flex items-center">
+                  <Home className="w-4 h-4 mr-2" />Home
+                </a></li>
                 <li><a href="#education" className="text-gray-400 hover:text-[#ff006e]">Education</a></li>
                 <li><a href="#skills" className="text-gray-400 hover:text-[#ff006e]">Skills</a></li>
                 <li><a href="#experience" className="text-gray-400 hover:text-[#ff006e]">Experience</a></li>
@@ -424,11 +508,11 @@ function App() {
                   className="text-gray-400 hover:text-[#ff006e]">
                   <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="https://leetcode.com/KavaliPavanKumar/" target="_blank" rel="noopener noreferrer" 
+                <a href="https://leetcode.com/u/Kavali_Pavan_Kumar/" target="_blank" rel="noopener noreferrer" 
                   className="text-gray-400 hover:text-[#ff006e]">
                   <Code className="w-6 h-6" />
                 </a>
-                <a href="https://www.hackerrank.com/profile/KavaliPavanKumar" target="_blank" rel="noopener noreferrer" 
+                <a href="https://www.hackerrank.com/profile/pavankumarkaval1" target="_blank" rel="noopener noreferrer" 
                   className="text-gray-400 hover:text-[#ff006e]">
                   <Award className="w-6 h-6" />
                 </a>
@@ -440,7 +524,10 @@ function App() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center">
-            <p className="text-gray-400">© 2024 Kavali Pavan Kumar. All rights reserved.</p>
+            <p className="text-gray-400">© 2025 Kavali Pavan Kumar. All rights reserved.</p>
+            <a href="#" className="inline-flex items-center justify-center mt-4 p-3 bg-[#03045e] text-white rounded-full shadow-lg hover:bg-[#ff006e] transition-colors">
+              <Home className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </footer>
